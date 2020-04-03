@@ -2,6 +2,11 @@ project:
   proj_title: CMS
   theme: darkly
 
+navbar:
+  Home: /
+  Register: /register
+  Sign Up: /sign-up
+
 blueprints:
   o2o:
     homepage: ''
