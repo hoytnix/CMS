@@ -4,6 +4,7 @@ h1 {
 
 .container {
 	min-height: 50vh;
+	text-align: center;
 }
 
 .legal-disclaimer {
