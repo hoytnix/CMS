@@ -25,3 +25,6 @@ blueprints:
     policies:
       - terms-of-use
       - privacy-policy
+    affiliates:
+      google:
+        affiliate_url: '/'

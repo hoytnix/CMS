@@ -63,7 +63,17 @@ def builder():
     for key in o2m:
         template = env.get_template(key + '.html')
         for page in o2m[key]:
-            html = template.render(body=page_to_html(page), **config)
+            page_config = config
+            try:
+                page_config['body'] = page_to_html(page)
+            except:
+                pass
+
+            if type(o2m[key]) is dict:
+                for k in o2m[key][page]:
+                    page_config[k] = o2m[key][page][k]
+
+            html = template.render(**page_config)
             path = 'dist/' + page + '/index.html'
             write_to_path(text=html, path=path)
 
