@@ -9,9 +9,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/static/css/vendor/{{ theme }}.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/brands.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="/static/css/custom.css?v=19">
+    <link rel="stylesheet" href="/static/css/custom.css?v=24">
 
     <title>{{ proj_title }}</title>
   </head>
@@ -22,14 +22,49 @@
         {% block body %}{% endblock %}
     </div>
 
-    {{ nav.footer(proj_title) }}
+    <footer>
+      <div class="social-footer bg-primary text-center py-3">
+        {% if social_media['amazon'] %}
+            <a href="{{ social_media['amazon'] }}" target="_blank"><i class="fa fa-amazon" aria-hidden="true"></i></a>
+        {% endif %}
+
+        {% if social_media['facebook'] %}
+            <a href="{{ social_media['facebook'] }}" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        {% endif %}
+
+        {% if social_media['instagram'] %}
+            <a href="{{ social_media['instagram'] }}" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        {% endif %}
+
+        {% if social_media['twitter'] %}
+            <a href="{{ social_media['twitter'] }}" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        {% endif %}
+
+        {% if social_media['linkedin'] %}
+            <a href="{{ social_media['linkedin'] }}" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+        {% endif %}
+
+        {% if social_media['youtube'] %}
+            <a href="{{ social_media['youtube'] }}" target="_blank"><i class="fa fa-youtube-square" aria-hidden="true"></i></a>
+        {% endif %}
+      </div>
+
+      <div class="legal-disclaimer bg-dark text-muted text-center py-3">
+        <p>Copyright &copy; 2020 <a href="/"> {{ proj_title }}</a>.</p>
+        <p><a href="/privacy-policy">Privacy Policy</a> <a href="/terms-of-use" style="margin-left: 1em">Terms of Use</a></p>
+        <p>This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
+        <p style="font-weight: bolder">IMPORTANT: Earnings and Legal Disclaimers</p>
+        <p>Earnings and income representations made by {{ proj_title }}, and their advertisers/sponsors (collectively, "{{ proj_title }} Programs") are aspirational statements only of your earnings potential. The success of {{ proj_title }} Programs, testimonials and other examples used are exceptional, non-typical results and are not intended to be and are not a guarantee that you or others will achieve the same results. Individual results will always vary and yours will depend entirely on your individual capacity, work ethic, business skills and experience, level of motivation, diligence in applying {{ proj_title }} Programs, the economy, the normal and unforeseen risks of doing business, and other factors.</p>
+        <p>{{ proj_title }} Programs are not responsible for your actions. You are solely responsible for your own moves and decisions and the evaluation and use of our products and services should be based on your own due diligence. You agree that {{ proj_title }} Programs are not liable to you in any way for your results in using our products and services. See our <a href="/terms-of-use">Terms & Conditions</a> for our full disclaimer of liability and other restrictions.</p>
+        <p>{{ proj_title }} Programs may receive compensation for products and services they recommend to you. {{ proj_title }} Programs personally uses a recommended resource unless it states otherwise. If you do not want {{ proj_title }} Programs to be compensated for a recommendation, then we advise that you search online for the item through a non-affiliate link.</p>
+      </div>
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/brands.min.js"></script>
 
     {{ marketing.retargeting(marketing_ids) }}
   </body>

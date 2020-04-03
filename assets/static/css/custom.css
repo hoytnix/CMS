@@ -1,9 +1,18 @@
 .container {
-	min-height: 100vh;
+	min-height: 50vh;
 }
 
 .legal-disclaimer {
 	padding: 0 1em;
 	font-size: 75%;
 	font-weight: bold;
+}
+
+.social-footer {
+	font-size: 300%;
+}
+
+.social-footer > a {
+	color: white;
+	margin-right: 0.5em;
 }

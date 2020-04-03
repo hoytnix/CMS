@@ -12,6 +12,13 @@ app:
     twitter_pixel:
     linkedin_partner:
     perfect_audience:
+  social_media:
+    amazon: https://www.amazon.com/author/revmichaelhoyt
+    facebook: https://www.facebook.com/SaintsBeTold/
+    instagram: https://www.instagram.com/economyofdreams
+    twitter: https://twitter.com/SaintsBeTold
+    linkedin: https://www.linkedin.com/in/economyofdreams
+    youtube: https://youtube.com/channel/UCNx9OlImFLIp9zYI9xteX9g
 
 blueprints:
   pages:
