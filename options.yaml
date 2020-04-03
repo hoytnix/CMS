@@ -7,6 +7,14 @@ navbar:
   Register: /register
   Sign Up: /sign-up
 
+marketing:
+  google_ads:
+  google_event:
+  facebook_pixel:
+  twitter_pixel:
+  linkedin_partner:
+  perfect_audience:
+
 blueprints:
   o2o:
     homepage: ''

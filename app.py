@@ -46,6 +46,7 @@ def builder():
     for k in options['project']:
         config[k] = options['project'][k]
     config['navbar_pages'] = options['navbar']
+    config['marketing_ids'] = options['marketing']
 
     env = Environment(loader=PackageLoader(__name__, 'assets/templates'))
 
