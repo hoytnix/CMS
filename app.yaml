@@ -6,12 +6,12 @@ app:
     Register: /register
     Sign Up: /sign-up
   marketing_ids:
-    google_ads:
-    google_event:
-    facebook_pixel:
-    twitter_pixel:
-    linkedin_partner:
-    perfect_audience:
+    google_ads: '655324231'
+    google_event: '-byqCK6OvcsBEMfovbgC'
+    facebook_pixel: '1466474223384257'
+    twitter_pixel: 'o3fgf'
+    linkedin_partner: '2054625'
+    perfect_audience: '5e6427d5e8b846a1d1000013'
   social_media:
     amazon: https://www.amazon.com/author/revmichaelhoyt
     facebook: https://www.facebook.com/SaintsBeTold/
