@@ -1,4 +1,4 @@
-project:
+app:
   proj_title: CMS Demo
   theme: darkly
   navbar_pages:

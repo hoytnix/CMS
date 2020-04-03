@@ -47,11 +47,11 @@ def build_template(template_key, config, page_name):
 
 
 def builder():
-    with open('options.yaml', 'r') as stream:
-        options = load(stream, Loader=Loader)
-    app_config = options['project']
+    with open('app.yaml', 'r') as stream:
+        o = load(stream, Loader=Loader)
+        app_config = o['project']
+        blueprints = o['blueprints']
 
-    blueprints = options['blueprints']
     for template_key in blueprints:
         template_options = blueprints[template_key]
 
