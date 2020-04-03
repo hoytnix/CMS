@@ -14,12 +14,11 @@ app:
     perfect_audience:
 
 blueprints:
-  index:
-    foo: bar
-  forms:
+  pages:
+    - index:
+        foo: bar
     - sign-up:
     - register:
-  policies:
     - terms-of-use:
     - privacy-policy:
   affiliates:
