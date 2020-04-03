@@ -33,10 +33,7 @@ def build_template(template_key, config, page_name):
 
     html = template.render(**config)
 
-    if page_name == 'index':
-        path = 'dist'
-    else:
-        path = 'dist/' + page_name
+    path = 'dist' if page_name == 'index' else 'dist/{}'.format(page_name)
     try:
         os.mkdir(path)
     except FileExistsError:
