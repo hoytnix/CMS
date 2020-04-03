@@ -1,4 +1,5 @@
 import time
+import os
 
 import click
 from jinja2 import Environment, PackageLoader, select_autoescape
@@ -18,6 +19,15 @@ class Event(LoggingEventHandler):
         builder()
 
 
+def write_to_path(text, path):
+    try:
+        os.mkdir('/'.join(path.split('/')[:-1]))
+    except FileExistsError:
+        pass
+    with open(path, 'w+') as stream:
+        stream.write(text)
+
+
 def builder():
     with open('options.yaml', 'r') as stream:
         options = load(stream, Loader=Loader)
@@ -26,8 +36,20 @@ def builder():
         loader=PackageLoader(__name__, 'assets/templates'),
         autoescape=select_autoescape(['html', 'xml'])
     )
-    template = env.get_template('index.html')
-    print(template.render(**{'foo':'bar'}))
+    o2o = options['blueprints']['o2o']
+    for key in o2o:
+        template = env.get_template(key + '.html')
+        html = template.render(**{'foo':'bar'})
+        path = 'dist/' + o2o[key] + '/index.html'
+        write_to_path(text=html, path=path)
+
+    o2m = options['blueprints']['o2m']
+    for key in o2m:
+        template = env.get_template(key + '.html')
+        for page in o2m[key]:
+            html = template.render(**{'foo':'bar'})
+            path = 'dist/' + page + '/index.html'
+            write_to_path(text=html, path=path)
 
 
 @click.group()

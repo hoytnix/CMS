@@ -1,4 +1,7 @@
-a: 1
-b:
-  c: 3
-  d: 4
+blueprints:
+  o2o:
+    homepage: '' 
+  o2m:
+    forms:
+      - sign-up
+      - register
