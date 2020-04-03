@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/static/css/vendor/{{ theme }}.min.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="/static/css/custom.css?v=24">
+    <link rel="stylesheet" href="/static/css/custom.css?v=32">
 
     <title>{{ proj_title }}</title>
   </head>
@@ -47,6 +47,24 @@
         {% if social_media['youtube'] %}
             <a href="{{ social_media['youtube'] }}" target="_blank"><i class="fa fa-youtube-square" aria-hidden="true"></i></a>
         {% endif %}
+      </div>
+
+      <div class="contact-footer bg-primary text-center py-1">
+        <p>
+            <i class="fa fa-phone-square" aria-hidden="true"></i>
+            {{ contact['phone'] }}
+            <a href="tel:{{ contact['phone'] }}" class="btn btn-success btn-sm">Call Now</a>
+            <a href="sms:{{ contact['phone'] }}" class="btn btn-success btn-sm">Text Now</a>
+        </p>
+        <p>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            {{ contact['email'] }}
+            <a href="mailto:{{ contact['email'] }}" class="btn btn-success btn-sm">Email Now</a>
+        </p>
+        <p>
+            <i class="fa fa-home" aria-hidden="true"></i>
+            {{ contact['mail'] }}
+        </p>
       </div>
 
       <div class="legal-disclaimer bg-dark text-muted text-center py-3">

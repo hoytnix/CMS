@@ -19,6 +19,10 @@ app:
     twitter: https://twitter.com/SaintsBeTold
     linkedin: https://www.linkedin.com/in/economyofdreams
     youtube: https://youtube.com/channel/UCNx9OlImFLIp9zYI9xteX9g
+  contact:
+    phone: '+12698610617'
+    email: 'mike@saintsbetold.org'
+    mail: 'Michael Hoyt, 1950 W Corporate Way #70122, Anaheim, CA 92801'
 
 blueprints:
   pages:
