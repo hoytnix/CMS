@@ -16,7 +16,9 @@
   <body>
     {{ nav.navbar(navbar_pages, proj_title) }}
     
-    {% block body %}{% endblock %}
+    <div class="container">
+        {% block body %}{% endblock %}
+    </div>
 
     {{ nav.footer(proj_title) }}
 
