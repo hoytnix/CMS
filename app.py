@@ -22,20 +22,28 @@ class Event(LoggingEventHandler):
         builder()
 
 
-def write_to_path(text, path):
+def build_template(template_key, config, page_name):
+    env = Environment(loader=PackageLoader(__name__, 'assets/templates'))
+    template = env.get_template('{}.html'.format(template_key))
+
     try:
-        os.mkdir('/'.join(path.split('/')[:-1]))
+        config['body'] = markdown.markdown(open('assets/pages/{}.md'.format(page_name)).read())
+    except:
+        pass
+
+    html = template.render(**config)
+
+    if page_name == 'index':
+        path = 'dist'
+    else:
+        path = 'dist/' + template_key
+    try:
+        os.mkdir(path)
     except FileExistsError:
         pass
-    with open(path, 'w+') as stream:
-        stream.write(text)
 
-
-def page_to_html(page):
-    if page == '':
-        page = 'index'
-    with open('assets/pages/' + page + '.md', 'r') as stream:
-        return markdown.markdown(stream.read())
+    with open(path + '/index.html', 'w+') as stream:
+        stream.write(html)
 
 
 def builder():
@@ -48,37 +56,32 @@ def builder():
     config['navbar_pages'] = options['navbar']
     config['marketing_ids'] = options['marketing']
 
-    env = Environment(loader=PackageLoader(__name__, 'assets/templates'))
+    blueprints = options['blueprints']
+    for template_key in blueprints:
+        template_options = blueprints[template_key]
 
-    # One-to-one blueprints
-    o2o = options['blueprints']['o2o']
-    for key in o2o:
-        template = env.get_template(key + '.html')
-        html = template.render(body=page_to_html(o2o[key]), **config)
-        path = 'dist/' + o2o[key] + '/index.html'
-        write_to_path(text=html, path=path)
-
-    # One-to-many blueprints
-    o2m = options['blueprints']['o2m']
-    for key in o2m:
-        template = env.get_template(key + '.html')
-        for page in o2m[key]:
-            page_config = config
-            try:
-                page_config['body'] = page_to_html(page)
-            except:
-                pass
-
-            if type(o2m[key]) is dict:
-                for k in o2m[key][page]:
-                    page_config[k] = o2m[key][page][k]
-
-            html = template.render(**page_config)
-            path = 'dist/' + page + '/index.html'
-            write_to_path(text=html, path=path)
+        # one-to-one
+        if type(template_options) is dict: 
+            for option in template_options:
+                config[option] = template_options[option]
+            build_template(template_key, config, template_key)
+        # one-to-many
+        else:
+            for page in template_options:
+                page_name = [x for x in page.keys()][0]
+                page_options = page[page_name]
+                try:
+                    for option in page_options:
+                        config[option] = page_options[option]
+                except:
+                    pass # no options to pass
+                build_template(template_key, config, page_name)
 
     # Collect static assets
-    shutil.rmtree('dist/static')
+    try:
+        shutil.rmtree('dist/static')
+    except:
+        pass
     shutil.copytree(src='assets/static', dst='dist/static')
 
 

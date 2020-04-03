@@ -16,15 +16,15 @@ marketing:
   perfect_audience:
 
 blueprints:
-  o2o:
-    homepage: ''
-  o2m:
-    forms:
-      - sign-up
-      - register
-    policies:
-      - terms-of-use
-      - privacy-policy
-    affiliates:
-      google:
+  index:
+    foo: bar
+  forms:
+    - sign-up:
+    - register:
+  policies:
+    - terms-of-use:
+    - privacy-policy:
+  affiliates:
+    - google:
         affiliate_url: '/'
+        foo: bar
