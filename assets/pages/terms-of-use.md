@@ -1,10 +1,10 @@
 # Terms of Use
 
-## Terms of Use of Company Name
+## Terms of Use of {{ proj_title }}
 
-Welcome to the Company Name website (the "Website").
+Welcome to the {{ proj_title }} website (the "Website").
 
-Company Name provides this Website and Services to you subject to the notices, terms, and conditions set forth in these terms (the "Terms of Use"). In addition, when you use any of our Services, you will be subject to the rules, guidelines, policies, terms, and conditions applicable to such service, and they are incorporated into this Terms of Use by this reference.
+{{ proj_title }} provides this Website and Services to you subject to the notices, terms, and conditions set forth in these terms (the "Terms of Use"). In addition, when you use any of our Services, you will be subject to the rules, guidelines, policies, terms, and conditions applicable to such service, and they are incorporated into this Terms of Use by this reference.
 
 These Terms of Use are effective as of April 03, 2020.
 
@@ -13,7 +13,7 @@ Your eligibility for use of the Website is contingent upon meeting the following
 * You are at least 18 years of age
 * You use the Website and Services according to these Terms of Use and all applicable laws and regulations determined by the state and country of residence
 * You provide complete and accurate registration information and maintain accurate registration information on the Webite
-* You agree and understand that Company Name may, at any time, and without prior notice, revoke and/or cancel your access if you fail to meet these criteria or violate any portion of these Terms of Use
+* You agree and understand that {{ proj_title }} may, at any time, and without prior notice, revoke and/or cancel your access if you fail to meet these criteria or violate any portion of these Terms of Use
 
 ## Use of this Website
 
@@ -27,9 +27,9 @@ In connection with your use of our Website, you must act responsibly and exercis
 
 ## Intellectual Property
 
-All code, text, software, scripts, graphics, files, photos, images, logos, and materials contained on this Website, or within the Services, are the sole property of Company Name.
+All code, text, software, scripts, graphics, files, photos, images, logos, and materials contained on this Website, or within the Services, are the sole property of {{ proj_title }}.
 
-Unauthorized use of any materials contained on this Website or within the Service may violate copyright laws, trademark laws, the laws of privacy and publicity, and/or other regulations and statutes. If you believe that any of the materials infringe on any third party's rights, please contact Company Name immediately at the address provided below.
+Unauthorized use of any materials contained on this Website or within the Service may violate copyright laws, trademark laws, the laws of privacy and publicity, and/or other regulations and statutes. If you believe that any of the materials infringe on any third party's rights, please contact {{ proj_title }} immediately at the address provided below.
 
 ## Third Party Websites
 
@@ -39,13 +39,13 @@ These other websites and parties are not under our control, and you acknowledge 
 
 ## Disclaimer of Warranty and Limitation of Liability
 
-The Website is provided "AS IS." appfigures, its suppliers, officers, directors, employees, and agents exclude and disclaim all representations and warranties, express or implied, related to this Website or in connection with the Services. You exclude Company Name from all liability for damages related to or arising out of the use of this Website.
+The Website is provided "AS IS." appfigures, its suppliers, officers, directors, employees, and agents exclude and disclaim all representations and warranties, express or implied, related to this Website or in connection with the Services. You exclude {{ proj_title }} from all liability for damages related to or arising out of the use of this Website.
 
 ## Changes to these Terms of Use
 
-Company Name retains the right to, at any time, modify or discontinue, any or all parts of the Website without notice.
+{{ proj_title }} retains the right to, at any time, modify or discontinue, any or all parts of the Website without notice.
 
-Additionally, Company Name reserves the right, in its sole discretion, to modify these Terms of Use at any time, effective by posting new terms on the Website with the date of modification. You are responsible for reading and understanding the terms of this agreement prior to registering with, or using the Service. Your use of the Website and/or Services after any such modification has been published constitutes your acceptance of the new terms as modified in these Terms of Use.
+Additionally, {{ proj_title }} reserves the right, in its sole discretion, to modify these Terms of Use at any time, effective by posting new terms on the Website with the date of modification. You are responsible for reading and understanding the terms of this agreement prior to registering with, or using the Service. Your use of the Website and/or Services after any such modification has been published constitutes your acceptance of the new terms as modified in these Terms of Use.
 
 ## Governing Law
 

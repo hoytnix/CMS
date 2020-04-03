@@ -5,7 +5,7 @@ import time
 
 import click
 import markdown
-from jinja2 import Environment, PackageLoader, select_autoescape
+from jinja2 import Environment, PackageLoader, BaseLoader
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
 from yaml import load, dump
@@ -27,7 +27,7 @@ def build_template(template_key, config, page_name):
     template = env.get_template('{}.html'.format(template_key))
 
     try:
-        config['body'] = markdown.markdown(open('assets/pages/{}.md'.format(page_name)).read())
+        config['body'] = Environment(loader=BaseLoader).from_string(markdown.markdown(open('assets/pages/{}.md'.format(page_name)).read())).render(**config)
     except:
         pass
 
