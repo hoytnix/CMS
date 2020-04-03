@@ -1,19 +1,17 @@
 project:
   proj_title: CMS Demo
   theme: darkly
-
-navbar:
-  Home: /
-  Register: /register
-  Sign Up: /sign-up
-
-marketing:
-  google_ads:
-  google_event:
-  facebook_pixel:
-  twitter_pixel:
-  linkedin_partner:
-  perfect_audience:
+  navbar_pages:
+    Home: /
+    Register: /register
+    Sign Up: /sign-up
+  marketing_ids:
+    google_ads:
+    google_event:
+    facebook_pixel:
+    twitter_pixel:
+    linkedin_partner:
+    perfect_audience:
 
 blueprints:
   index:

@@ -49,33 +49,21 @@ def build_template(template_key, config, page_name):
 def builder():
     with open('options.yaml', 'r') as stream:
         options = load(stream, Loader=Loader)
-
-    config = {}
-    for k in options['project']:
-        config[k] = options['project'][k]
-    config['navbar_pages'] = options['navbar']
-    config['marketing_ids'] = options['marketing']
+    app_config = options['project']
 
     blueprints = options['blueprints']
     for template_key in blueprints:
         template_options = blueprints[template_key]
 
         # one-to-one
-        if type(template_options) is dict: 
-            for option in template_options:
-                config[option] = template_options[option]
-            build_template(template_key, config, template_key)
+        if type(template_options) is dict:
+            build_template(template_key, {**app_config, **template_options}, template_key)
         # one-to-many
         else:
             for page in template_options:
                 page_name = [x for x in page.keys()][0]
-                page_options = page[page_name]
-                try:
-                    for option in page_options:
-                        config[option] = page_options[option]
-                except:
-                    pass # no options to pass
-                build_template(template_key, config, page_name)
+                page_options = page[page_name] or {}
+                build_template(template_key, {**app_config, **page_options}, page_name)
 
     # Collect static assets
     try:
