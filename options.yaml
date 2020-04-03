@@ -22,3 +22,6 @@ blueprints:
     forms:
       - sign-up
       - register
+    policies:
+      - terms-of-use
+      - privacy-policy
