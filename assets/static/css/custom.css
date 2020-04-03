@@ -20,3 +20,13 @@
 .contact-footer > p > a {
 	margin: 0 0.5em;
 }
+
+.social-top-nav {
+	font-size: 150%;
+	margin: 1em 0;
+}
+
+.social-top-nav > a {
+	color: white;
+	margin: 0 0.5em;
+}
