@@ -1,5 +1,7 @@
-import time
 import os
+import shutil
+import time
+
 
 import click
 import markdown
@@ -39,23 +41,30 @@ def page_to_html(page):
 def builder():
     with open('options.yaml', 'r') as stream:
         options = load(stream, Loader=Loader)
+    project = options['project']
 
     env = Environment(loader=PackageLoader(__name__, 'assets/templates'))
 
+    # One-to-one blueprints
     o2o = options['blueprints']['o2o']
     for key in o2o:
         template = env.get_template(key + '.html')
-        html = template.render(body=page_to_html(o2o[key]))
+        html = template.render(body=page_to_html(o2o[key]), **project)
         path = 'dist/' + o2o[key] + '/index.html'
         write_to_path(text=html, path=path)
 
+    # One-to-many blueprints
     o2m = options['blueprints']['o2m']
     for key in o2m:
         template = env.get_template(key + '.html')
         for page in o2m[key]:
-            html = template.render(body=page_to_html(page))
+            html = template.render(body=page_to_html(page), **project)
             path = 'dist/' + page + '/index.html'
             write_to_path(text=html, path=path)
+
+    # Collect static assets
+    shutil.rmtree('dist/static')
+    shutil.copytree(src='assets/static', dst='dist/static')
 
 
 @click.group()

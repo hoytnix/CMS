@@ -1,3 +1,7 @@
+project:
+  proj_title: CMS
+  theme: darkly
+
 blueprints:
   o2o:
     homepage: ''
