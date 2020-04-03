@@ -1,6 +1,6 @@
 blueprints:
   o2o:
-    homepage: '' 
+    homepage: ''
   o2m:
     forms:
       - sign-up
