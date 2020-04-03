@@ -49,7 +49,7 @@ def build_template(template_key, config, page_name):
 def builder():
     with open('app.yaml', 'r') as stream:
         o = load(stream, Loader=Loader)
-        app_config = o['project']
+        app_config = o['app']
         blueprints = o['blueprints']
 
     for template_key in blueprints:
