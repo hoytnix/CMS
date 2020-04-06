@@ -7,6 +7,7 @@ import hashlib
 import click
 import markdown
 from csscompressor import compress as csscompress
+from htmlmin import minify as htmlminify
 from jinja2 import Environment, PackageLoader, BaseLoader
 from slimit import minify as jsminify
 from watchdog.observers import Observer
@@ -142,6 +143,7 @@ def builder():
                 html = open(fp, 'r').read()
                 for key in static_cache:
                     html = html.replace(key, static_cache[key])
+                html = htmlminify(html, remove_comments=True)
                 with open(fp, 'w+') as stream:
                     stream.write(html)
 
