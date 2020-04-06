@@ -8,6 +8,7 @@ import click
 import markdown
 from csscompressor import compress as csscompress
 from jinja2 import Environment, PackageLoader, BaseLoader
+from slimit import minify as jsminify
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from yaml import load, dump
@@ -102,8 +103,8 @@ def builder():
         pass
     shutil.copytree(src='assets/static', dst='dist/static')
 
-    # CSS Cache Busting
-    css_cache = {}
+    # CSS Minification
+    static_cache = {}
     for (root, dirs, files) in os.walk('dist/static/css'):
         for file in files:
             with open(root + '/' + file, 'r') as stream:
@@ -114,19 +115,33 @@ def builder():
                 new_file = "{}.{}.css".format(".".join(file.split('.')[:-1]), hashsum)
                 with open('dist/static/css/' + new_file, 'w+') as stream:
                     stream.write(css)
-                css_cache[file] = new_file
+                static_cache[file] = new_file
         break
 
+    # JS Minification
+    for (root, dirs, files) in os.walk('dist/static/js'):
+        for file in files:
+            with open(root + '/' + file, 'r') as stream:
+                js = jsminify(stream.read(), mangle=False)
+                m = hashlib.md5()
+                m.update(str.encode(js))
+                hashsum = m.hexdigest()
+                new_file = "{}.{}.js".format(".".join(file.split('.')[:-1]), hashsum)
+                with open('dist/static/js/' + new_file, 'w+') as stream:
+                    stream.write(js)
+                static_cache[file] = new_file
+        break
+
+    # Cache Busting
     for (root, dirs, files) in os.walk('dist'):
         for file in files:
             if file.endswith('html'):
                 fp = root + '/' + file
                 html = open(fp, 'r').read()
-                for key in css_cache:
-                    html = html.replace(key, css_cache[key])
+                for key in static_cache:
+                    html = html.replace(key, static_cache[key])
                 with open(fp, 'w+') as stream:
                     stream.write(html)
-
 
 
 @click.group()
