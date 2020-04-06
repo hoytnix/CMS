@@ -116,6 +116,7 @@ def builder():
                 with open('dist/static/css/' + new_file, 'w+') as stream:
                     stream.write(css)
                 static_cache[file] = new_file
+            os.remove(root + '/' + file)
         break
 
     # JS Minification
@@ -130,6 +131,7 @@ def builder():
                 with open('dist/static/js/' + new_file, 'w+') as stream:
                     stream.write(js)
                 static_cache[file] = new_file
+            os.remove(root + '/' + file)
         break
 
     # Cache Busting
