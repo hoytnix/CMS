@@ -1,10 +1,12 @@
 import os
 import shutil
 import time
+import hashlib
 
 
 import click
 import markdown
+from csscompressor import compress as csscompress
 from jinja2 import Environment, PackageLoader, BaseLoader
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
@@ -99,6 +101,32 @@ def builder():
     except:
         pass
     shutil.copytree(src='assets/static', dst='dist/static')
+
+    # CSS Cache Busting
+    css_cache = {}
+    for (root, dirs, files) in os.walk('dist/static/css'):
+        for file in files:
+            with open(root + '/' + file, 'r') as stream:
+                css = csscompress(stream.read())
+                m = hashlib.md5()
+                m.update(str.encode(css))
+                hashsum = m.hexdigest()
+                new_file = "{}.{}.css".format(".".join(file.split('.')[:-1]), hashsum)
+                with open('dist/static/css/' + new_file, 'w+') as stream:
+                    stream.write(css)
+                css_cache[file] = new_file
+        break
+
+    for (root, dirs, files) in os.walk('dist'):
+        for file in files:
+            if file.endswith('html'):
+                fp = root + '/' + file
+                html = open(fp, 'r').read()
+                for key in css_cache:
+                    html = html.replace(key, css_cache[key])
+                with open(fp, 'w+') as stream:
+                    stream.write(html)
+
 
 
 @click.group()
