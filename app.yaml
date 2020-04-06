@@ -1,6 +1,6 @@
 app:
   proj_title: CMS Demo
-  theme: darkly
+  theme: pulse
   navbar_pages:
     Home: /
     Register: /register
