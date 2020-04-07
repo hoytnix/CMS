@@ -27,7 +27,9 @@ app:
 blueprints:
   pages:
     - index:
-        img: /static/img/foobar.webp
+        img: 
+            webp: /static/img/foobar.webp
+            other: /static/img/foobar.png
         description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     - sign-up:
         title: Sign Up

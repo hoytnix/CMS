@@ -26,7 +26,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ canonical_url }}" />
     {% if img %}
-    <meta property="og:image" content="{{ canonical_url }}{{ img }}" />
+    <meta property="og:image" content="{{ canonical_url }}{{ img['webp'] }}" />
     {% endif %}
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="{{ proj_title }}" />
@@ -54,7 +54,7 @@
         "priceRange": "$$",
 
         {% if img %}
-        "image": "{{ canonical_url }}{{ img }}",
+        "image": "{{ canonical_url }}{{ img['webp'] }}",
         {% endif %}
 
         {% if description %}
@@ -142,8 +142,13 @@
     </nav>
 
     <div class="container">
+        {% block breadcrumbs %}{% endblock %}
+
         {% if img %}
-          <img src="{{ img }}" class="featured-img">
+          <picture>
+            <source class="featured-img" srcset="{{ img['webp'] }}" type="image/webp">
+            <img class="featured-img" src="{{ img['other'] }}">
+          </picture>
         {% endif %}
 
         {% block body %}{% endblock %}
