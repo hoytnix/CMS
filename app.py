@@ -12,6 +12,7 @@ from jinja2 import Environment, PackageLoader, BaseLoader
 from slimit import minify as jsminify
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+from webptools import webplib as webp
 from yaml import load, dump
 
 try:
@@ -96,6 +97,15 @@ def builder():
                 page_name = [x for x in page.keys()][0]
                 page_options = page[page_name] or {}
                 build_template(template_key, {**app_config, **page_options}, page_name)
+
+    # Minify Images
+    for (root, dirs, files) in os.walk('assets/static/img'):
+        for file in files:
+            if not file.endswith('webp'):
+                old_fp = root + '/' + file
+                new_fp = ''.join(old_fp.split('.')[:-1]) + '.webp'
+                if not os.path.exists(new_fp):
+                    webp.cwebp(old_fp, new_fp, "-q 80")
 
     # Collect static assets
     try:

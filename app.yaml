@@ -34,7 +34,7 @@ blueprints:
   pages:
     - index:
         title: Homepage
-        img: /static/img/foobar.png
+        img: /static/img/foobar.webp
     - sign-up:
     - register:
     - terms-of-use:
