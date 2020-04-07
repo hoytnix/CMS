@@ -79,18 +79,6 @@
       element.src = "/static/js/app.js";
       document.body.appendChild(element);
 
-      var element = document.createElement("script");
-      element.src = "/static/js/vendor/jquery-3.2.1.slim.min.js";
-      document.body.appendChild(element);
-
-      var element = document.createElement("script");
-      element.src = "/static/js/vendor/popper.min.js";
-      document.body.appendChild(element);
-
-      var element = document.createElement("script");
-      element.src = "/static/js/vendor/bootstrap.min.js";
-      document.body.appendChild(element);
-
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -214,6 +202,11 @@
         <p>{{ proj_title }} Programs may receive compensation for products and services they recommend to you. {{ proj_title }} Programs personally uses a recommended resource unless it states otherwise. If you do not want {{ proj_title }} Programs to be compensated for a recommendation, then we advise that you search online for the item through a non-affiliate link.</p>
       </div>
     </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="/static/js/vendor/jquery-3.2.1.slim.min.js"></script>
+    <script src="/static/js/vendor/popper.min.js"></script>
+    <script src="/static/js/vendor/bootstrap.min.js"></script>
 
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-{{ gtm }}"
