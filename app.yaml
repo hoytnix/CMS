@@ -2,18 +2,12 @@ app:
   proj_title: CMS Demo
   canonical_url: https://content-management-syste-a9bb6.web.app
   jsonld_id: 'M#vF_X&-FcRT.rL.y=.cUAdj[=q?#GH2'
+  gtm: W8J9GD7
   theme: pulse
   navbar_pages:
     Home: /
     Register: /register
     Sign Up: /sign-up
-  marketing_ids:
-    google_ads: '655324231'
-    google_event: '-byqCK6OvcsBEMfovbgC'
-    facebook_pixel: '1466474223384257'
-    twitter_pixel: 'o3fgf'
-    linkedin_partner: '2054625'
-    perfect_audience: '5e6427d5e8b846a1d1000013'
   social_media:
     amazon: https://www.amazon.com/author/revmichaelhoyt
     facebook: https://www.facebook.com/SaintsBeTold/

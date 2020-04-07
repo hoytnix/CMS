@@ -1,4 +1,3 @@
-{% import "macros/marketing.html" as marketing %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,7 +12,6 @@
 
     <!-- Proprietary -->
     <link rel="stylesheet" href="/static/css/custom.css">
-    <script src="/static/js/app.js"></script>
 
     <!-- Open Graph -->
     {% if title %}
@@ -63,9 +61,36 @@
     }
     </script>
 
+    <!-- Defer JS -->
+    <script type="text/javascript">
+    function GetJS() {
+      var element = document.createElement("script");
+      element.src = "/static/js/app.js";
+      document.body.appendChild(element);
+
+      var element = document.createElement("script");
+      element.src = "/static/js/vendor/jquery-3.2.1.slim.min.js";
+      document.body.appendChild(element);
+
+      var element = document.createElement("script");
+      element.src = "/static/js/vendor/popper.min.js";
+      document.body.appendChild(element);
+
+      var element = document.createElement("script");
+      element.src = "/static/js/vendor/bootstrap.min.js";
+      document.body.appendChild(element);
+
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-{{ gtm }}');
+    }
+    </script>
+
     <title>{% if title %}{{ title }} - {% endif %}{{ proj_title }}</title>
   </head>
-  <body>
+  <body onload="GetJS()">
     <div class="contact-top bg-light text-dark text-center py-1">
       <i class="fa fa-phone-square" aria-hidden="true"></i>
       {{ contact['phone'] }}
@@ -179,12 +204,9 @@
       </div>
     </footer>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="/static/js/vendor/jquery-3.2.1.slim.min.js"></script>
-    <script src="/static/js/vendor/popper.min.js"></script>
-    <script src="/static/js/vendor/bootstrap.min.js"></script>
-
-    {{ marketing.retargeting(marketing_ids) }}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-{{ gtm }}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
   </body>
 </html>
