@@ -27,13 +27,22 @@ app:
 blueprints:
   pages:
     - index:
-        title: Homepage
         img: /static/img/foobar.webp
+        description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     - sign-up:
+        title: Sign Up
+        img: /static/img/foobar.webp
+        description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     - register:
+        title: Register
+        img: /static/img/foobar.webp
+        description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     - terms-of-use:
+        title: Terms of Use
+        description: Terms of Use
     - privacy-policy:
+        title: Privacy Policy
+        description: Privacy Policy
   affiliates:
     - google:
         affiliate_url: '/'
-        foo: bar
