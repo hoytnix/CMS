@@ -33,11 +33,15 @@ blueprints:
         description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     - sign-up:
         title: Sign Up
-        img: /static/img/foobar.webp
+        img: 
+            webp: /static/img/foobar.webp
+            other: /static/img/foobar.png
         description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     - register:
         title: Register
-        img: /static/img/foobar.webp
+        img: 
+            webp: /static/img/foobar.webp
+            other: /static/img/foobar.png
         description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     - terms-of-use:
         title: Terms of Use
