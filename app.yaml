@@ -3,7 +3,7 @@ app:
   canonical_url: https://content-management-syste-a9bb6.web.app
   jsonld_id: 'M#vF_X&-FcRT.rL.y=.cUAdj[=q?#GH2'
   gtm: W8J9GD7
-  theme: pulse
+  theme: litera
   navbar_pages:
     Home: /
     Register: /register
