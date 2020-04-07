@@ -28,7 +28,7 @@ app:
 blueprints:
   pages:
     - index:
-        foo: bar
+        title: Homepage
         img: /static/img/foobar.png
     - sign-up:
     - register:

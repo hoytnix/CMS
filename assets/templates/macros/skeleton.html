@@ -15,14 +15,20 @@
     <script src="/static/js/app.js"></script>
 
     <!-- Open Graph -->
+    {% if title %}
+    <meta property="og:title" content="{{ title }}" />
+    {% else %}
     <meta property="og:title" content="{{ proj_title }}" />
+    {% endif %}
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ canonical_url }}" />
     {% if img %}
     <meta property="og:image" content="{{ canonical_url }}{{ img }}" />
     {% endif %}
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="{{ proj_title }}" />
 
-    <title>{{ proj_title }}</title>
+    <title>{% if title %}{{ title }} - {% endif %}{{ proj_title }}</title>
   </head>
   <body>
     <div class="contact-top bg-light text-dark text-center py-1">
