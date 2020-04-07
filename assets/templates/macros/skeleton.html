@@ -65,8 +65,12 @@
         </ul>
       </div>
     </nav>
-    
+
     <div class="container">
+        {% if img %}
+          <img src="{{ img }}" class="featured-img">
+        {% endif %}
+
         {% block body %}{% endblock %}
     </div>
 

@@ -28,6 +28,7 @@ blueprints:
   pages:
     - index:
         foo: bar
+        img: /static/img/foobar.png
     - sign-up:
     - register:
     - terms-of-use:
