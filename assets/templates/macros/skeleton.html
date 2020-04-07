@@ -62,12 +62,9 @@
         {% endif %}
 
         "sameAs": [
-          {% if social_media['amazon'] %}"{{ social_media['amazon'] }}",{% endif %}
-          {% if social_media['facebook'] %}"{{ social_media['facebook'] }}",{% endif %}
-          {% if social_media['instagram'] %}"{{ social_media['instagram'] }}",{% endif %}
-          {% if social_media['twitter'] %}"{{ social_media['twitter'] }}",{% endif %}
-          {% if social_media['linkedin'] %}"{{ social_media['linkedin'] }}",{% endif %}
-          {% if social_media['youtube'] %}"{{ social_media['youtube'] }}"{% endif %}
+          {% for key in social_media -%}
+          "{{ social_media[key] }}"{% if not loop.last %},{% endif %}
+          {% endfor -%}
         ]
     }
     </script>
@@ -113,29 +110,9 @@
             </li>
           {% endfor %}
           <li class="nav-item active social-top-nav">
-            {% if social_media['amazon'] %}
-                <a href="{{ social_media['amazon'] }}" target="_blank"><i class="fa fa-amazon" aria-hidden="true"></i></a>
-            {% endif %}
-
-            {% if social_media['facebook'] %}
-                <a href="{{ social_media['facebook'] }}" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-            {% endif %}
-
-            {% if social_media['instagram'] %}
-                <a href="{{ social_media['instagram'] }}" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-            {% endif %}
-
-            {% if social_media['twitter'] %}
-                <a href="{{ social_media['twitter'] }}" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
-            {% endif %}
-
-            {% if social_media['linkedin'] %}
-                <a href="{{ social_media['linkedin'] }}" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-            {% endif %}
-
-            {% if social_media['youtube'] %}
-                <a href="{{ social_media['youtube'] }}" target="_blank"><i class="fa fa-youtube-square" aria-hidden="true"></i></a>
-            {% endif %}
+            {% for key in social_media %}
+            <a href="{{ social_media[key] }}" target="_blank"><i class="fa fa-{{ key }}" aria-hidden="true"></i></a>
+            {% endfor %}
           </li>
         </ul>
       </div>
@@ -156,29 +133,9 @@
 
     <footer>
       <div class="social-footer bg-primary text-center py-3">
-        {% if social_media['amazon'] %}
-            <a href="{{ social_media['amazon'] }}" target="_blank"><i class="fa fa-amazon" aria-hidden="true"></i></a>
-        {% endif %}
-
-        {% if social_media['facebook'] %}
-            <a href="{{ social_media['facebook'] }}" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-        {% endif %}
-
-        {% if social_media['instagram'] %}
-            <a href="{{ social_media['instagram'] }}" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-        {% endif %}
-
-        {% if social_media['twitter'] %}
-            <a href="{{ social_media['twitter'] }}" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
-        {% endif %}
-
-        {% if social_media['linkedin'] %}
-            <a href="{{ social_media['linkedin'] }}" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-        {% endif %}
-
-        {% if social_media['youtube'] %}
-            <a href="{{ social_media['youtube'] }}" target="_blank"><i class="fa fa-youtube-square" aria-hidden="true"></i></a>
-        {% endif %}
+        {% for key in social_media %}
+        <a href="{{ social_media[key] }}" target="_blank"><i class="fa fa-{{ key }}" aria-hidden="true"></i></a>
+        {% endfor %}
       </div>
 
       <div class="contact-footer bg-primary text-light text-center py-1">
@@ -195,12 +152,12 @@
         </p>
         <p>
             <i class="fa fa-home" aria-hidden="true"></i>
-            {{ contact['mail']['street'] }}, {{ contact['mail']['city'] }}, {{ contact['mail']['state'] }}, {{ contact['mail']['postal'] }}
+            {% for key in contact['mail'] %}{{ contact['mail'][key] }}{% if not loop.last %}, {% endif %}{% endfor %}
         </p>
         <p>
           <div>
             <div class="map-responsive">
-              <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q={{ contact['mail']['street'] }}+{{ contact['mail']['city'] }}+{{ contact['mail']['state'] }}+{{ contact['mail']['postal'] }}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+              <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q={% for key in contact['mail'] %}{{ contact['mail'][key] }}{% if not loop.last %}+{% endif %}{% endfor %}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
           </div>
         </p>
