@@ -14,6 +14,14 @@
     <link rel="stylesheet" href="/static/css/custom.css">
     <script src="/static/js/app.js"></script>
 
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ proj_title }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ canonical_url }}" />
+    {% if img %}
+    <meta property="og:image" content="{{ canonical_url }}{{ img }}" />
+    {% endif %}
+
     <title>{{ proj_title }}</title>
   </head>
   <body>

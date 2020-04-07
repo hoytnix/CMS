@@ -1,5 +1,6 @@
 app:
   proj_title: CMS Demo
+  canonical_url: https://content-management-syste-a9bb6.web.app
   theme: pulse
   navbar_pages:
     Home: /
