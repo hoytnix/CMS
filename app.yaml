@@ -51,4 +51,4 @@ blueprints:
         description: Privacy Policy
   affiliates:
     - google:
-        affiliate_url: '/'
+        affiliate_url: 'https://google.com'
