@@ -29,11 +29,13 @@ h1 {
 
 .social-top-nav {
 	font-size: 150%;
+	margin-left: 1em;
 }
 
 .social-top-nav > a {
 	color: white;
 	margin: 0 0.5em;
+	float: right;
 }
 
 .contact-top > a {
@@ -45,4 +47,14 @@ h1 {
   margin-top: 1em;
   max-width: 100%;
   max-height: 50vh;
+}
+
+.map-responsive{
+    overflow:hidden;
+    position:relative;
+    height:320px;
+}
+.map-responsive iframe{
+    max-height:50vh;
+    max-width:100%;
 }

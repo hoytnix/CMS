@@ -197,6 +197,13 @@
             <i class="fa fa-home" aria-hidden="true"></i>
             {{ contact['mail']['street'] }}, {{ contact['mail']['city'] }}, {{ contact['mail']['state'] }}, {{ contact['mail']['postal'] }}
         </p>
+        <p>
+          <div>
+            <div class="map-responsive">
+              <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q={{ contact['mail']['street'] }}+{{ contact['mail']['city'] }}+{{ contact['mail']['state'] }}+{{ contact['mail']['postal'] }}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+          </div>
+        </p>
       </div>
 
       <div class="legal-disclaimer bg-dark text-muted text-center py-3">
