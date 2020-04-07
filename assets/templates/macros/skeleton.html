@@ -42,7 +42,7 @@
         "@id": "{{ jsonld_id }}",
         "url": "{{ canonical_url }}",
         "name": "{{ proj_title }}",
-        "address": {
+        "address":
           "@type": "PostalAddress",
           "streetAddress": "{{ contact['mail']['street'] }}",
           "addressLocality": "{{ contact['mail']['city'] }}",
@@ -52,14 +52,12 @@
         },
         "telephone": "{{ contact['phone'] }}",
         "priceRange": "$$",
-
-        {% if img %}
+        {%- if img %}
         "image": "{{ canonical_url }}{{ img['webp'] }}",
-        {% endif %}
-
-        {% if description %}
+        {% endif -%}
+        {%- if description -%}
         "description": "{{ description }}",
-        {% endif %}
+        {% endif -%}
 
         "sameAs": [
           {% for key in social_media -%}
