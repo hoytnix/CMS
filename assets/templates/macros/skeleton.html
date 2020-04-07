@@ -88,6 +88,8 @@
     </script>
 
     <title>{% if title %}{{ title }} - {% endif %}{{ proj_title }}</title>
+
+    {% block insert_header %}{% endblock %}
   </head>
   <body onload="GetJS()">
     <div class="contact-top bg-light text-dark text-center py-1">
@@ -212,5 +214,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-{{ gtm }}"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
+    {% block insert_footer %}{% endblock %}
   </body>
 </html>
