@@ -1,6 +1,7 @@
 app:
   proj_title: CMS Demo
   canonical_url: https://content-management-syste-a9bb6.web.app
+  jsonld_id: 'M#vF_X&-FcRT.rL.y=.cUAdj[=q?#GH2'
   theme: pulse
   navbar_pages:
     Home: /
@@ -23,7 +24,11 @@ app:
   contact:
     phone: '+12698610617'
     email: 'mike@saintsbetold.org'
-    mail: 'Michael Hoyt, 1950 W Corporate Way #70122, Anaheim, CA 92801'
+    mail: 
+        street: '1950 W Corporate Way #70122'
+        city: Anaheim
+        state: CA 
+        postal: '92801'
 
 blueprints:
   pages:

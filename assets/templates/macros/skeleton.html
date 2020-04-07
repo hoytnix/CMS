@@ -28,6 +28,40 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="{{ proj_title }}" />
 
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "{{ jsonld_id }}",
+        "url": "{{ canonical_url }}",
+        "name": "{{ proj_title }}",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "{{ contact['mail']['street'] }}",
+          "addressLocality": "{{ contact['mail']['city'] }}",
+          "addressRegion": "{{ contact['mail']['state'] }}",
+          "postalCode": "{{ contact['mail']['postal'] }}",
+          "addressCountry": "US"
+        },
+        "telephone": "{{ contact['phone'] }}",
+        "priceRange": "$$",
+
+        {% if img %}
+        "image": "{{ canonical_url }}{{ img }}",
+        {% endif %}
+
+        "sameAs": [
+          {% if social_media['amazon'] %}"{{ social_media['amazon'] }}",{% endif %}
+          {% if social_media['facebook'] %}"{{ social_media['facebook'] }}",{% endif %}
+          {% if social_media['instagram'] %}"{{ social_media['instagram'] }}",{% endif %}
+          {% if social_media['twitter'] %}"{{ social_media['twitter'] }}",{% endif %}
+          {% if social_media['linkedin'] %}"{{ social_media['linkedin'] }}",{% endif %}
+          {% if social_media['youtube'] %}"{{ social_media['youtube'] }}"{% endif %}
+        ]
+    }
+    </script>
+
     <title>{% if title %}{{ title }} - {% endif %}{{ proj_title }}</title>
   </head>
   <body>
@@ -129,7 +163,7 @@
         </p>
         <p>
             <i class="fa fa-home" aria-hidden="true"></i>
-            {{ contact['mail'] }}
+            {{ contact['mail']['street'] }}, {{ contact['mail']['city'] }}, {{ contact['mail']['state'] }}, {{ contact['mail']['postal'] }}
         </p>
       </div>
 
