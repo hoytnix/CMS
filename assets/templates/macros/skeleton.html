@@ -121,8 +121,8 @@
 
         {% if img %}
           <picture>
-            <source class="featured-img" srcset="{{ img['webp'] }}" type="image/webp">
-            <img class="featured-img" src="{{ img['other'] }}">
+            <source class="featured-img" srcset="/static/img/webp/{{ '.'.join(img.split('.')[:-1]) }}.webp" type="image/webp">
+            <img class="featured-img" src="/static/img/{{ img }}">
           </picture>
         {% endif %}
 

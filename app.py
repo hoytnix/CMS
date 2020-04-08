@@ -101,11 +101,11 @@ def builder():
     # Minify Images
     for (root, dirs, files) in os.walk('assets/static/img'):
         for file in files:
-            if not file.endswith('webp'):
-                old_fp = root + '/' + file
-                new_fp = ''.join(old_fp.split('.')[:-1]) + '.webp'
-                if not os.path.exists(new_fp):
-                    webp.cwebp(old_fp, new_fp, "-q 80")
+            old_fp = root + '/' + file
+            new_fp = root + '/webp/' + '.'.join(file.split('.')[:-1]) + '.webp'
+            if not os.path.exists(new_fp):
+                webp.cwebp(old_fp, new_fp, "-q 80")
+        break
 
     # Collect static assets
     try:

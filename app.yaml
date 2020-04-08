@@ -27,21 +27,15 @@ app:
 blueprints:
   pages:
     - index:
-        img: 
-            webp: /static/img/foobar.webp
-            other: /static/img/foobar.png
+        img: foobar.png
         description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     - sign-up:
         title: Sign Up
-        img: 
-            webp: /static/img/foobar.webp
-            other: /static/img/foobar.png
+        img: foobar.png
         description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     - register:
         title: Register
-        img: 
-            webp: /static/img/foobar.webp
-            other: /static/img/foobar.png
+        img: foobar.png
         description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     - terms-of-use:
         title: Terms of Use
