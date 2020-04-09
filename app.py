@@ -99,12 +99,22 @@ def builder():
                 build_template(template_key, {**app_config, **page_options}, page_name)
 
     # Minify Images
+    os.system("imagemin --plugin=pngquant assets/static/img/*.png --out-dir=assets/static/img/min")
+    os.system("imagemin --plugin=mozjpeg assets/static/img/*.jpeg --out-dir=assets/static/img/min")
+    os.system("imagemin --plugin=mozjpeg assets/static/img/*.jpg --out-dir=assets/static/img/min")
+    os.system("imagemin --plugin=gifsicle assets/static/img/*.gif --out-dir=assets/static/img/min")
+    #os.system("imagemin --plugin=svgo assets/static/img/*.svg --out-dir=assets/static/img/min")
+
     for (root, dirs, files) in os.walk('assets/static/img'):
         for file in files:
             old_fp = root + '/' + file
-            new_fp = root + '/webp/' + '.'.join(file.split('.')[:-1]) + '.webp'
-            if not os.path.exists(new_fp):
-                webp.cwebp(old_fp, new_fp, "-q 80")
+            raw_fp = root + '/raw/' + file
+            webp_fp = root + '/webp/' + '.'.join(file.split('.')[:-1]) + '.webp'
+
+            shutil.move(old_fp, raw_fp)
+            
+            if not os.path.exists(webp_fp):
+                webp.cwebp(raw_fp, webp_fp, "-q 80")
         break
 
     # Collect static assets
