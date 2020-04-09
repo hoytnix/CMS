@@ -1,0 +1,21 @@
+{% extends "macros/skeleton.html" %}
+
+{% block insert_header %}
+<style>
+.container {
+	text-align: left;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+{% for article in kvs %}
+	{% for k in items %}
+	{% for v in k %}
+	{% if v == article %}
+	<a href="/article/{{ v }}"><h3>{{ k[v]['title'] }}</h3></a>
+	{% endif %}
+	{% endfor %}
+	{% endfor %}
+{% endfor %}
+{% endblock %}

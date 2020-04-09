@@ -1,5 +1,25 @@
 {% extends "macros/skeleton.html" %}
 
+{% block insert_header %}
+<style>
+.container {
+	text-align: left;
+}
+</style>
+{% endblock %}
+
 {% block body %}
-{{ body }}
+{% for kv in items %}
+{% for key in kv %}
+<p>
+<a href="/article/{{ key }}"><h3>{{ kv[key]['title'] }}</h3></a>
+<h4>Tags:</h4>
+<ul>
+	{% for tag in kv[key]['tags'] %}
+	<li><a href="/tag/{{ tag }}">{{ tag }}</a></li>
+	{% endfor %}
+</ul>
+</p>
+{% endfor %}
+{% endfor %}
 {% endblock %}
