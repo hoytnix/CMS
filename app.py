@@ -110,34 +110,33 @@ def builder():
     # Build modeled pages
     for model_key in models:
         model = models[model_key]
-        for template in model['templates']:
-            template_key = [x for x in template][0]
-            if type(template[template_key]) is str: # list views
-                template_item = None
-                template_path = template[template_key]
-
-                build_template(template_key, {**app_config, **model}, template_path)
+        templates = model['templates']
+        items = model['items']
+        for template in templates:
+            t = templates[template]
+            if type(t) is str: # list views
+                build_template(template, {**app_config, **{'items': items}}, t)
             else: # detail views
-                template_item = [x for x in template[template_key]][0]
-                template_glob = template[template_key][template_item]
+                t_search = [k for k in t][0]
+                t_glob = t[t_search]
 
-                if template_glob.endswith('*'):
-                    for item in model['items']:
-                        page_name = [x for x in item][0]
-                        template_path = template_glob.replace('*', page_name)
-                        build_template(template_key, {**app_config, **item}, template_path)
+                kvs = {}
+                for page_name in items:
+                    item = items[page_name]
 
-                if template_glob.endswith('[*]'):
-                    kvs = {}
-                    for item in model['items']:
-                        page_name = [x for x in item][0]
-                        for k in item[page_name][template_item]:
-                            if not k in kvs:
-                                kvs[k] = []
-                            kvs[k].append(page_name)
+                    if t_glob.endswith('*'):
+                        page_options = {**app_config, **item}
+                        build_template(template, page_options, t_glob.replace('*', page_name))
+                    else:
+                        for v in item[t_search]:
+                            if not v in kvs:
+                                kvs[v] = []
+                            kvs[v].append({**item, **{'key': page_name}})
+
+                if t_glob.endswith('[*]'):
                     for k in kvs:
-                        template_path = template_glob.replace('[*]', k)
-                        build_template(template_key, {**app_config, **model, **{'kvs': kvs[k]}}, template_path)
+                        page_options = {**app_config, **{'kvs': kvs[k]}}
+                        build_template(template, page_options, t_glob.replace('[*]', k))
 
     # Minify Images
     os.system("imagemin --plugin=pngquant assets/static/img/*.png --out-dir=assets/static/img/min")

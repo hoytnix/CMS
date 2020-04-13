@@ -9,17 +9,16 @@
 {% endblock %}
 
 {% block body %}
-{% for kv in items %}
-{% for key in kv %}
+{% for page_name in items %}
+{% set item = items[page_name] %}
 <p>
-<a href="/article/{{ key }}"><h3>{{ kv[key]['title'] }}</h3></a>
+<a href="/article/{{ page_name }}"><h3>{{ item['title'] }}</h3></a>
 <h4>Tags:</h4>
 <ul>
-	{% for tag in kv[key]['tags'] %}
+	{% for tag in item['tags'] %}
 	<li><a href="/tag/{{ tag }}">{{ tag }}</a></li>
 	{% endfor %}
 </ul>
 </p>
-{% endfor %}
 {% endfor %}
 {% endblock %}

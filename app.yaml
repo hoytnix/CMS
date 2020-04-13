@@ -6,8 +6,7 @@ app:
   theme: litera
   navbar_pages:
     Home: /
-    Register: /register
-    Sign Up: /sign-up
+    News: /news
   social_media:
     amazon: https://www.amazon.com/author/revmichaelhoyt
     facebook: https://www.facebook.com/SaintsBeTold/
@@ -50,16 +49,16 @@ blueprints:
 models:
   news:
     templates:
-      - news: news
-      - articles: {title: article/*}
-      - tags: {tags: 'tag/[*]'}
+      news: news
+      articles: {title: article/*}
+      tags: {tags: 'tag/[*]'}
     items:
-      - hello-world:
-          title: Hello World
-          tags: [foo, bar, lorem, ipsum]
-      - foo:
-          title: Foo
-          tags: [foo, lorem]
-      - bar:
-          title: Bar
-          tags: [bar, ipsum]
+      hello-world:
+        title: Hello World
+        tags: [foo, bar, lorem, ipsum]
+      foo:
+        title: Foo
+        tags: [foo, lorem]
+      bar:
+        title: Bar
+        tags: [bar, ipsum]
