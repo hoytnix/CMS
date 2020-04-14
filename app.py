@@ -62,6 +62,7 @@ def build_template(template_key, config, page_name):
     env = Environment(loader=PackageLoader(__name__, 'assets/templates'))
     template = env.get_template('{}.html'.format(template_key))
 
+    config['page_name'] = page_name
     try:
         config['body'] = Environment(loader=BaseLoader).from_string(markdown.markdown(open('assets/pages/{}.md'.format(page_name)).read())).render(**config)
     except:
@@ -141,7 +142,7 @@ def builder():
 
                 if t_glob.endswith('[*]'):
                     for k in kvs:
-                        page_options = {**app_config, **{'kvs': kvs[k]}}
+                        page_options = {**app_config, **{'kvs': kvs[k], 'title': k}}
                         build_template(template, page_options, t_glob.replace('[*]', k))
                         sitemap.append(t_glob.replace('[*]', k))
 
