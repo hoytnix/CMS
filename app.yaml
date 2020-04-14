@@ -15,9 +15,10 @@ app:
     linkedin: https://www.linkedin.com/in/economyofdreams
     youtube: https://youtube.com/channel/UCNx9OlImFLIp9zYI9xteX9g
   contact:
+    name: Mike
     phone: '+12698610617'
     email: 'mike@saintsbetold.org'
-    mail: 
+    mail:
         street: '1950 W Corporate Way #70122'
         city: Anaheim
         state: CA 

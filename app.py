@@ -93,6 +93,9 @@ def builder():
         blueprints = o['blueprints']
         models = o['models']
 
+    # Sitemap Data
+    sitemap = []
+
     # Build static pages
     for template_key in blueprints:
         template_options = blueprints[template_key]
@@ -106,6 +109,7 @@ def builder():
                 page_name = [x for x in page.keys()][0]
                 page_options = page[page_name] or {}
                 build_template(template_key, {**app_config, **page_options}, page_name)
+                sitemap.append(page_name)
 
     # Build modeled pages
     for model_key in models:
@@ -116,6 +120,7 @@ def builder():
             t = templates[template]
             if type(t) is str: # list views
                 build_template(template, {**app_config, **{'items': items}}, t)
+                sitemap.append(t)
             else: # detail views
                 t_search = [k for k in t][0]
                 t_glob = t[t_search]
@@ -127,6 +132,7 @@ def builder():
                     if t_glob.endswith('*'):
                         page_options = {**app_config, **item}
                         build_template(template, page_options, t_glob.replace('*', page_name))
+                        sitemap.append(t_glob.replace('*', page_name))
                     else:
                         for v in item[t_search]:
                             if not v in kvs:
@@ -137,25 +143,52 @@ def builder():
                     for k in kvs:
                         page_options = {**app_config, **{'kvs': kvs[k]}}
                         build_template(template, page_options, t_glob.replace('[*]', k))
+                        sitemap.append(t_glob.replace('[*]', k))
+
+    # Compile special items
+    with open('dist/sitemap.xml', 'w+') as stream:
+        env = Environment(loader=PackageLoader(__name__, 'assets/templates'))
+        template = env.get_template('sitemap.xml')
+        html = template.render({**app_config, **{'urls': sitemap, 'date': '2020-04-13'}})
+        stream.write(html)
+
+    with open('dist/robots.txt', 'w+') as stream:
+        env = Environment(loader=PackageLoader(__name__, 'assets/templates'))
+        template = env.get_template('robots.txt')
+        html = template.render(**app_config)
+        stream.write(html)
+
+    with open('dist/404.html', 'w+') as stream:
+        env = Environment(loader=PackageLoader(__name__, 'assets/templates'))
+        template = env.get_template('404.html')
+        html = template.render(**app_config)
+        stream.write(html)
 
     # Minify Images
-    os.system("imagemin --plugin=pngquant assets/static/img/*.png --out-dir=assets/static/img/min")
-    os.system("imagemin --plugin=mozjpeg assets/static/img/*.jpeg --out-dir=assets/static/img/min")
-    os.system("imagemin --plugin=mozjpeg assets/static/img/*.jpg --out-dir=assets/static/img/min")
-    os.system("imagemin --plugin=gifsicle assets/static/img/*.gif --out-dir=assets/static/img/min")
-    #os.system("imagemin --plugin=svgo assets/static/img/*.svg --out-dir=assets/static/img/min")
-
+    img_task = False
     for (root, dirs, files) in os.walk('assets/static/img'):
-        for file in files:
-            old_fp = root + '/' + file
-            raw_fp = root + '/raw/' + file
-            webp_fp = root + '/webp/' + '.'.join(file.split('.')[:-1]) + '.webp'
-
-            shutil.move(old_fp, raw_fp)
-            
-            if not os.path.exists(webp_fp):
-                webp.cwebp(raw_fp, webp_fp, "-q 80")
+        if files.__len__() > 0:
+            img_task = True
         break
+
+    if img_task:
+        os.system("imagemin --plugin=pngquant assets/static/img/*.png --out-dir=assets/static/img/min")
+        os.system("imagemin --plugin=mozjpeg assets/static/img/*.jpeg --out-dir=assets/static/img/min")
+        os.system("imagemin --plugin=mozjpeg assets/static/img/*.jpg --out-dir=assets/static/img/min")
+        os.system("imagemin --plugin=gifsicle assets/static/img/*.gif --out-dir=assets/static/img/min")
+        #os.system("imagemin --plugin=svgo assets/static/img/*.svg --out-dir=assets/static/img/min")
+
+        for (root, dirs, files) in os.walk('assets/static/img'):
+            for file in files:
+                old_fp = root + '/' + file
+                raw_fp = root + '/raw/' + file
+                webp_fp = root + '/webp/' + '.'.join(file.split('.')[:-1]) + '.webp'
+
+                shutil.move(old_fp, raw_fp)
+                
+                if not os.path.exists(webp_fp):
+                    webp.cwebp(raw_fp, webp_fp, "-q 80")
+            break
 
     # Collect static assets
     try:
