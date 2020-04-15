@@ -1,7 +1,12 @@
 Changelist
 ==========
 
-## 2020/04/13
+## 2020/04/15
+
+* Release R1
+
+
+## 2020/04/13 (347b5bcd545de38771e198e8a9218265b801ab32)
 
 * Added breadcrumbs on page and in JSON-LD.
 
