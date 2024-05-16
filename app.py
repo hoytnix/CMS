@@ -9,7 +9,7 @@ import markdown
 from csscompressor import compress as csscompress
 from htmlmin import minify as htmlminify
 from jinja2 import Environment, PackageLoader, BaseLoader
-from slimit import minify as jsminify
+#from slimit import minify as jsminify
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from webptools import webplib as webp
@@ -214,6 +214,7 @@ def builder():
             os.remove(root + '/' + file)
         break
 
+    """
     # JS Minification
     for (root, dirs, files) in os.walk('dist/static/js'):
         for file in files:
@@ -228,6 +229,7 @@ def builder():
                 static_cache[file] = new_file
             os.remove(root + '/' + file)
         break
+    """
 
     # Cache Busting
     for (root, dirs, files) in os.walk('dist'):
