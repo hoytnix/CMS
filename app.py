@@ -192,15 +192,17 @@ def builder():
             break
 
     # Collect static assets
+    dist_dir = app_config['dist_dir']
+
     try:
-        shutil.rmtree('dist/static')
+        shutil.rmtree(dist_dir + '/static')
     except:
-        pass
-    shutil.copytree(src='assets/static', dst='dist/static')
+        pass6
+    shutil.copytree(src='assets/static', dst=dist_dir + '/static')
 
     # CSS Minification
     static_cache = {}
-    for (root, dirs, files) in os.walk('dist/static/css'):
+    for (root, dirs, files) in os.walk(dist_dir + '/static/css'):
         for file in files:
             with open(root + '/' + file, 'r') as stream:
                 css = csscompress(stream.read())
@@ -208,7 +210,7 @@ def builder():
                 m.update(str.encode(css))
                 hashsum = m.hexdigest()
                 new_file = "{}.{}.css".format(".".join(file.split('.')[:-1]), hashsum)
-                with open('dist/static/css/' + new_file, 'w+') as stream:
+                with open(dist_dir + '/static/css/' + new_file, 'w+') as stream:
                     stream.write(css)
                 static_cache[file] = new_file
             os.remove(root + '/' + file)
@@ -232,7 +234,7 @@ def builder():
     """
 
     # Cache Busting
-    for (root, dirs, files) in os.walk('dist'):
+    for (root, dirs, files) in os.walk(dist_dir):
         for file in files:
             if file.endswith('html'):
                 fp = root + '/' + file
