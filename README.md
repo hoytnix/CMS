@@ -1,23 +1,16 @@
 # CMS
 Static website generator using Jinja2
 
+
 ## Installation
-
-### Create a `.firebaserc`-file
-
-```
-{
-  "projects": {
-    "default": "MY-PROJECT-ID"
-  }
-}
-```
 
 ### Create a virtual environment for Python
 
-`python3 -m venv ./venv`
+`python3 -m venv venv`
 
 ### Activate venv
+
+`source venv/bin/activate`
 
 ### Install Python requirements
 
@@ -28,3 +21,14 @@ Static website generator using Jinja2
 `npm install`
 
 ### Generate a random JSON-LD id for app.yaml
+
+
+## Usage
+
+### Compile
+
+`python3 -m app build`
+
+### Watch & Build Upon Changes
+
+`python3 -m app watch`
